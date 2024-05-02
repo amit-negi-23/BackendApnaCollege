@@ -1,0 +1,14 @@
+{
+  "name": "learning-express",
+  "version": "1.0.0",
+  "description": "i am learning express js for backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Amit Negi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
