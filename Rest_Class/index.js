@@ -50,6 +50,16 @@ app.get('/posts/:id', (req, res) => {
     res.render("show.ejs", { post })
 });
 
+app.patch('/posts/:id', (req, res) => {
+    let { id } = req.params;
+    console.log(id)
+    let newContent = req.body.content;
+    let post = posts.find((p) => id === p.id);
+    post.content = newContent;
+    console.log(post)
+    res.send("patch request working")
+})
+
 app.listen(port, () => {
     console.log("Listening to post : 8080");
 });
