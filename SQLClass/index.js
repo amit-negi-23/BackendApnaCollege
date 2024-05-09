@@ -19,20 +19,21 @@ let getRandomUser = () => {
     ];
 }
 
-let data = [];
-for(i=1;  i<=100; i++ ){
-  data.push(getRandomUser());
-}
+app.get('/', (req, res)=>{
+    let q = `SELECT count(*) FROM user`
+    try {
+        connection.query(q, (err, result) => {
+            if (err) throw err;
+            console.log(result[0]["count(*)"]);
+            res.send("Success");
+        });
+    } catch (err) {
+        console.log(err);
+        res.send("Some error in DB");
+    }
+    
+});
 
-let q = `INSERT INTO user (id, username, email, password) VALUES ? `;
-
-try {
-    connection.query(q, [data],(err, result) => {
-        if (err) throw err;
-        console.log(result);
-    });
-} catch (err) {
-    console.log(err);
-}
-
-connection.end();
+app.listen("8080", ()=>{
+    console.log("Server is listening to port 8080");
+});
