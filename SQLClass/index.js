@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const methodOverride = require("method-override");
+const { v4: uuidv4 } = require("uuid");
 
 app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
@@ -95,6 +96,25 @@ app.patch('/user/:id', (req, res) => {
         res.send("Some error in DB");
     }
 })
+
+app.get('/user/new', (req, res) => {
+    res.render("addNewUser.ejs")
+});
+
+app.post('/user/new', (req, res) => {
+    let { username, email, password } = req.body;
+    try {
+        let q = `INSERT INTO user (id, username, email, password) VALUES ('${uuidv4()}','${username}', '${email}', '${password}' )`;
+        connection.query(q, (err, result) => {
+            if (err) throw err;
+            res.send(result);
+        });
+    } catch (err) {
+        console.log(err);
+        res.send("Some error in DB");
+    }
+
+});
 
 app.listen("8080", () => {
     console.log("Server is listening to port 8080");
