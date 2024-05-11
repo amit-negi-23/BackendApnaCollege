@@ -15,3 +15,9 @@ const userSchema = new mongoose.Schema({
     email: String,
     age: Number,
 });
+
+const User = mongoose.model("User", userSchema);
+
+const user1 = new User({name: "Amit", email: "abc@gmail.com", age: 24})
+
+user1.save();
