@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 
-User.findOne({age: {$gt: 25}}).then((res)=>{
+User.findById("663f6eec05978e6047d48484").then((res)=>{
     console.log(res);
 }).catch((err)=>{
     console.log(err);
