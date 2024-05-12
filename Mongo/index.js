@@ -18,13 +18,13 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 
-User.deleteOne({name: "Amit"})
-.then((res)=>{
-    console.log(res);
-})
-.catch((err)=>{
-    console.log(err);
-});
+User.findByIdAndDelete("663f6eec05978e6047d48484")
+    .then((res) => {
+        console.log(res);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
 
 // User.findByIdAndUpdate("663f8f124be04e0d30aae522", { age: 95 }, {new: true})
 //     .then((res) => {
