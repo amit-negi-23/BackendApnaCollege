@@ -18,11 +18,15 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 
-User.findById("663f6eec05978e6047d48484").then((res)=>{
-    console.log(res);
-}).catch((err)=>{
-    console.log(err);
-});
+User.updateOne({ name: "krishna" }, { age: 100 }).then((res) => {
+    console.log(res)
+})
+
+// User.findById("663f6eec05978e6047d48484").then((res)=>{
+//     console.log(res);
+// }).catch((err)=>{
+//     console.log(err);
+// });
 
 // const user2 = new User({name: "mansi", email: "mansi@gmail.com", age: 28})
 
