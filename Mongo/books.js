@@ -14,6 +14,7 @@ const bookSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
+        maxLength: 20,
     },
     author: {
         type: String,
@@ -21,15 +22,19 @@ const bookSchema = new mongoose.Schema({
     price: {
         type: Number,
     },
+    discount: {
+        type: Number,
+        default: 0
+    }
 })
 
 
 const Book = mongoose.model("Book", bookSchema);
 
 let book1 = new Book({
-    title: "Mathematics 9th",
-    author: "RD Sharma",
-    price: 1250
+    title: "NCERT maths",
+    author: "SS Verma",
+    price: 400
 });
 
 book1.save()
