@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 
-User.findByIdAndDelete("663f6eec05978e6047d48484")
+User.findOneAndDelete({name: "sooraj"})
     .then((res) => {
         console.log(res);
     })
