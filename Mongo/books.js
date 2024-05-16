@@ -15,12 +15,14 @@ const bookSchema = new mongoose.Schema({
         type: String,
         required: true,
         maxLength: 20,
+        lowercase: true
     },
     author: {
         type: String,
     },
     price: {
         type: Number,
+        min: 1
     },
     discount: {
         type: Number,
@@ -32,15 +34,29 @@ const bookSchema = new mongoose.Schema({
 const Book = mongoose.model("Book", bookSchema);
 
 let book1 = new Book({
-    title: "NCERT maths",
-    author: "SS Verma",
+    title: "Wings of FIRE",
+    author: "APJ Abdul Kalam",
     price: 400
 });
 
-book1.save()
-.then((res) => {
+Book.findByIdAndUpdate('6644533ffac4ccee4255ed4c',{price: 600},{runValidators: true})
+.then((res)=>{
     console.log(res);
 })
 .catch((err)=>{
-    console.log(err);
+    console.log(err)
 })
+
+// book1.save()
+// .then((res) => {
+//     console.log("res",res);
+// })
+// .catch((err)=>{
+//     console.log(err);
+// })
+
+// Book.findOne({title: "WINgS OF FIRE"})
+// .then((res)=>{
+//     console.log(res)
+
+// })
